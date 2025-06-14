@@ -1,0 +1,18 @@
+FROM docker:dind
+
+RUN apk add --no-cache \
+    go \
+    bash
+
+WORKDIR /app
+
+
+RUN go install github.com/air-verse/air@latest
+COPY go.mod go.sum ./
+RUN go mod download
+
+ENV PATH="$PATH:/root/go/bin"
+
+COPY . .
+
+ENTRYPOINT ["air", "-c", ".air.toml"]

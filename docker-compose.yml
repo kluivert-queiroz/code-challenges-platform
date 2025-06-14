@@ -1,0 +1,41 @@
+x-logging:
+  &default-logging
+  logging:
+    driver: json-file
+    options:
+      max-size: 100M
+
+services:
+  api:
+    build:
+      context: api
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    privileged: true
+    <<: *default-logging
+    restart: always
+    stop_signal: SIGTERM
+    stop_grace_period: 10s
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/submissions:/tmp/submissions
+      - ./api:/app
+
+  ui:
+    build:
+      context: ui
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+  # db:
+  #   image: postgres:16.2
+  #   volumes:
+  #     - data:/var/lib/postgresql/data/
+  #   env_file:
+  #     - .env
+  #   <<: *default-logging
+  #   restart: always
+
+volumes:
+  data:
