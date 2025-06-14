@@ -12,7 +12,7 @@ type LanguageSpecifications struct {
 
 var languageSpecifications = map[submission.Language]LanguageSpecifications{
 	submission.LanguageNode: {
-		Image:         "node:23-alpine",
+		Image:         "node:24-alpine",
 		Command:       "node",
 		ContainerName: "node-code-executor",
 		Args:          []string{"--experimental-strip-types", "--no-warnings"},
