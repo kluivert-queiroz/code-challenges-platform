@@ -2,6 +2,10 @@
 
 A platform for running and testing code challenges in various programming languages. The system uses Docker containers to safely execute user-submitted code and verify the results against expected outputs.
 
+![image](https://github.com/user-attachments/assets/53fb66c0-bca0-4109-a3b2-41c272084ccb)
+![image](https://github.com/user-attachments/assets/fda7ef90-21a1-4b24-9d86-bcec6da03e02)
+
+
 ## Next steps
 - Add support to multiple languages
 - Add database and a way to create challenges from UI
